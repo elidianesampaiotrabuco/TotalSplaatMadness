@@ -34,12 +34,24 @@ namespace TotalSplaatMadness
               .SetPoster(assetMan.Get<Texture2D>("Normal Splaat Poster"), "Splaat", "An ink splat that wanders around the school, while singing the Klasky Csupo 1998 Splaat logo. No clue why he\'s here.")
               .Build();
 
+            GMajorSplaat RealGMajorSplaat = new NPCBuilder<GMajorSplaat>(Info)
+  .SetName("G-Major Splaat")
+  .SetEnum("RealGMajorSplaat")
+  .SetMinMaxAudioDistance(1, 300)
+  .IgnorePlayerOnSpawn()
+  .AddSpawnableRoomCategories(new RoomCategory[] { RoomCategory.Hall, RoomCategory.Class, RoomCategory.Office, RoomCategory.Faculty })
+  .SetPoster(assetMan.Get<Texture2D>("G Major Splaat Poster"), "G-Major Splaat", "A demonic version of Splaat, that somehow got popularized by the logo editing community...")
+  .Build();
+
             yield return "Doing some miscellaneous stuff...";
 
             NormalSplaat.normalSplaatSprite = assetMan.Get<Sprite>("Normal Splaat Sprite");
             NormalSplaat.normalKlaskyCsupo = assetMan.Get<SoundObject>("Normal Splaat Music");
+            RealGMajorSplaat.gmajorSplaatSprite = assetMan.Get<Sprite>("G Major Splaat Sprite");
+            RealGMajorSplaat.gmajorKlaskyCsupo = assetMan.Get<SoundObject>("G Major Splaat Music");
 
             assetMan.Add<NPC>("Splaat", NormalSplaat);
+            assetMan.Add<NPC>("G-Major Splaat", RealGMajorSplaat);
 
             yield break;
         }
@@ -79,6 +91,12 @@ namespace TotalSplaatMadness
                     weight = floorNumber < 2 ? 350 * floorNumber : 600
                 }
                 );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("G-Major Splaat"),
+                    weight = floorNumber < 2 ? 165 * floorNumber : 300
+                }
+                );
             }
             else if (floor == "END")
             {
@@ -86,6 +104,12 @@ namespace TotalSplaatMadness
                 {
                     selection = assetMan.Get<NPC>("Splaat"),
                     weight = 600
+                }
+                );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("G-Major Splaat"),
+                    weight = 300
                 }
                 );
             }
