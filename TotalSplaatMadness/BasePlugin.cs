@@ -31,7 +31,7 @@ namespace TotalSplaatMadness
               .SetMinMaxAudioDistance(1, 300)
               .IgnorePlayerOnSpawn()
               .AddSpawnableRoomCategories(new RoomCategory[] { RoomCategory.Hall, RoomCategory.Class, RoomCategory.Office, RoomCategory.Faculty })
-              .SetPoster(assetMan.Get<Texture2D>("Normal Splaat Poster"), "Splaat", "An ink splat that wanders around the school, while singing the Klasky Csupo 1998 Splaat logo.")
+              .SetPoster(assetMan.Get<Texture2D>("Normal Splaat Poster"), "Splaat", "An ink splat that wanders around the school, while singing the Klasky Csupo 1998 Splaat logo. No clue why he\'s here.")
               .Build();
 
             yield return "Doing some miscellaneous stuff...";
@@ -44,13 +44,17 @@ namespace TotalSplaatMadness
             yield break;
         }
 
-        private void GetAssets() // this is gonna be thousand of lines of code for the rest of the splaat variants
+        private void GetAssets() // this is gonna be thousands of lines of code for the rest of the splaat variants
         {
             assetMan.Add<Texture2D>("Normal Splaat Texture", AssetLoader.TextureFromMod(this, npcSubDirectory, "NormalSplaat.png"));
             assetMan.Add<Texture2D>("Normal Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "NormalSplaatPoster.png"));
             assetMan.Add<Sprite>("Normal Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("Normal Splaat Texture"), 100));
             Color normalSplaatColor = new Color32(36, 75, 145, 255);
             assetMan.Add<SoundObject>("Normal Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "NormalSplaatFixed.WAV"), "*Music*", SoundType.Music, normalSplaatColor));
+            assetMan.Add<Texture2D>("G Major Splaat Texture", AssetLoader.TextureFromMod(this, npcSubDirectory, "GMajorSplaat.png"));
+            assetMan.Add<Texture2D>("G Major Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "GMajorSplaatPoster.png"));
+            assetMan.Add<Sprite>("G Major Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("G Major Splaat Texture"), 100));
+            assetMan.Add<SoundObject>("G Major Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "GMajorSplaat.mp3"), "*Music*", SoundType.Music, Color.white));
         }
 
         public void Awake()
