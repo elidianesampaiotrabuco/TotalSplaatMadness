@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace TotalSplaatMadness
 {
-    [BepInPlugin("sticky.bbplus.splaatvariants", "Total Splaat Madness", "0.0.1")]
+    [BepInPlugin("sticky.bbplus.splaatvariants", "Total Splaat Madness", "0.1.0")]
 
     [BepInDependency("mtm101.rulerp.bbplus.baldidevapi")]
 
@@ -43,15 +43,27 @@ namespace TotalSplaatMadness
   .SetPoster(assetMan.Get<Texture2D>("G Major Splaat Poster"), "G-Major Splaat", "A demonic version of Splaat, that somehow got popularized by the logo editing community...")
   .Build();
 
+            ReversedSplaat RealReversedSplaat = new NPCBuilder<ReversedSplaat>(Info)
+.SetName("Reversed Splaat")
+.SetEnum("RealReversedSplaat")
+.SetMinMaxAudioDistance(1, 300)
+.IgnorePlayerOnSpawn()
+.AddSpawnableRoomCategories(new RoomCategory[] { RoomCategory.Hall, RoomCategory.Class, RoomCategory.Office, RoomCategory.Faculty })
+.SetPoster(assetMan.Get<Texture2D>("Reversed Splaat Poster"), "taalpS", ".ereh s\'eh yhw eulc oN .ogol taalpS 8991 opusC yksalK eht gnignis elihw ,loohcs eht dnuora srednaw taht talps kni nA")
+.Build();
+
             yield return "Doing some miscellaneous stuff...";
 
             NormalSplaat.normalSplaatSprite = assetMan.Get<Sprite>("Normal Splaat Sprite");
             NormalSplaat.normalKlaskyCsupo = assetMan.Get<SoundObject>("Normal Splaat Music");
             RealGMajorSplaat.gmajorSplaatSprite = assetMan.Get<Sprite>("G Major Splaat Sprite");
             RealGMajorSplaat.gmajorKlaskyCsupo = assetMan.Get<SoundObject>("G Major Splaat Music");
+            RealReversedSplaat.reversedSplaatSprite = assetMan.Get<Sprite>("Reversed Splaat Sprite");
+            RealReversedSplaat.reversedKlaskyCsupo = assetMan.Get<SoundObject>("Reversed Splaat Music");
 
             assetMan.Add<NPC>("Splaat", NormalSplaat);
             assetMan.Add<NPC>("G-Major Splaat", RealGMajorSplaat);
+            assetMan.Add<NPC>("Reversed Splaat", RealReversedSplaat);
 
             yield break;
         }
@@ -67,6 +79,10 @@ namespace TotalSplaatMadness
             assetMan.Add<Texture2D>("G Major Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "GMajorSplaatPoster.png"));
             assetMan.Add<Sprite>("G Major Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("G Major Splaat Texture"), 100));
             assetMan.Add<SoundObject>("G Major Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "GMajorSplaat.mp3"), "*Music*", SoundType.Music, Color.white));
+            assetMan.Add<Texture2D>("Reversed Splaat Texture", AssetLoader.TextureFromMod(this, npcSubDirectory, "ReversedSplaat.png"));
+            assetMan.Add<Texture2D>("Reversed Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "ReversedSplaatPoster.png"));
+            assetMan.Add<Sprite>("Reversed Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("Reversed Splaat Texture"), 100));
+            assetMan.Add<SoundObject>("Reversed Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "ReversedSplaat.mp3"), "*cisuM*", SoundType.Music, normalSplaatColor));
         }
 
         public void Awake()
@@ -97,6 +113,12 @@ namespace TotalSplaatMadness
                     weight = floorNumber < 2 ? 165 * floorNumber : 300
                 }
                 );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("Reversed Splaat"),
+                    weight = floorNumber < 2 ? 65 * floorNumber : 200
+                }
+                );
             }
             else if (floor == "END")
             {
@@ -112,6 +134,12 @@ namespace TotalSplaatMadness
                     weight = 300
                 }
                 );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("Reversed Splaat"),
+                    weight = 200
+                }
+);
             }
 
             floorObject.MarkAsNeverUnload();
