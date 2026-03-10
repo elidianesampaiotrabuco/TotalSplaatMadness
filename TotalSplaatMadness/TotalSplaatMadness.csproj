@@ -1,0 +1,338 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\core\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="AlmostEngine">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\AlmostEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="AlmostEngine.Shared">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\AlmostEngine.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Harmony">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\core\BepInEx.Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Preloader">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\core\BepInEx.Preloader.dll</HintPath>
+    </Reference>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\com.rlabrecque.steamworks.net.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="HarmonyXInterop">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\core\HarmonyXInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\core\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\core\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\core\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\core\Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\core\MonoMod.RuntimeDetour.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Utils">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\core\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="MTM101BaldAPI">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\plugins\MTM101BaldAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="NavMeshComponents">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\NavMeshComponents.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BepInEx\plugins\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Windows">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Rewired_Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\System.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.StackTrace">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\System.Diagnostics.StackTrace.dll</HintPath>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\System.EnterpriseServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Globalization.Extensions">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\System.Globalization.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Internals">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\System.ServiceModel.Internals.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath.XDocument">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\System.Xml.XPath.XDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="UModelerCommon">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UModelerCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Unity.ProGrids.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.AndroidJNIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.DSPGraphModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GIModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.GIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.HotReloadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.LocalizationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ProfilerModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.ProfilerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.StreamingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.SubstanceModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.SubsystemsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.TextCoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.TLSModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsNativeModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UIElementsNativeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UmbraModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UNETModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UNETModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsCommonModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityCurlModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UnityCurlModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.VFXModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VirtualTexturingModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.VirtualTexturingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>..\..\..\..\Baldis.Basics.Plus.v0.14\Baldis.Basics.Plus.v0.14\BALDI_Data\Managed\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
