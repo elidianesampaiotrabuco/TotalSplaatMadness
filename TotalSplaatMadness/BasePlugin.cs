@@ -1,8 +1,11 @@
 ﻿using BepInEx;
-
 using HarmonyLib;
-
 using MTM101BaldAPI;
+using MTM101BaldAPI.AssetTools;
+using MTM101BaldAPI.ObjectCreation;
+using MTM101BaldAPI.Registers;
+using System.Collections;
+using UnityEngine;
 
 namespace TotalSplaatMadness
 {
@@ -12,11 +15,78 @@ namespace TotalSplaatMadness
 
     public class BasePlugin : BaseUnityPlugin
     {
+        public AssetManager assetMan = new AssetManager();
+        private static string npcSubDirectory = "Textures/NPCs";
+        private static string npcAudioSubDirectory = "Audio/NPCs";
+
+        private IEnumerator RegisterAssets()
+        {
+            yield return 2;
+
+            yield return "Building variants...";
+
+            Splaat NormalSplaat = new NPCBuilder<Splaat>(Info)
+              .SetName("Splaat")
+              .SetEnum("NormalSplaat")
+              .SetMinMaxAudioDistance(1, 300)
+              .IgnorePlayerOnSpawn()
+              .AddSpawnableRoomCategories(new RoomCategory[] { RoomCategory.Hall, RoomCategory.Class, RoomCategory.Office, RoomCategory.Faculty })
+              .SetPoster(assetMan.Get<Texture2D>("Normal Splaat Poster"), "Splaat", "An ink splat that wanders around the school, while singing the Klasky Csupo 1998 Splaat logo.")
+              .Build();
+
+            yield return "Doing some miscellaneous stuff...";
+
+            NormalSplaat.normalSplaatSprite = assetMan.Get<Sprite>("Normal Splaat Sprite");
+            NormalSplaat.normalKlaskyCsupo = assetMan.Get<SoundObject>("Normal Splaat Music");
+
+            assetMan.Add<NPC>("Splaat", NormalSplaat);
+
+            yield break;
+        }
+
+        private void GetAssets() // this is gonna be thousand of lines of code for the rest of the splaat variants
+        {
+            assetMan.Add<Texture2D>("Normal Splaat Texture", AssetLoader.TextureFromMod(this, npcSubDirectory, "NormalSplaat.png"));
+            assetMan.Add<Texture2D>("Normal Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "NormalSplaatPoster.png"));
+            assetMan.Add<Sprite>("Normal Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("Normal Splaat Texture"), 100));
+            Color normalSplaatColor = new Color32(36, 75, 145, 255);
+            assetMan.Add<SoundObject>("Normal Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "NormalSplaatFixed.WAV"), "*Music*", SoundType.Music, normalSplaatColor));
+        }
+
         public void Awake()
         {
             Harmony harmony = new Harmony("sticky.bbplus.splaatvariants");
 
             harmony.PatchAll();
+
+            GetAssets();
+
+            LoadingEvents.RegisterOnAssetsLoaded(Info, RegisterAssets(), LoadingEventOrder.Pre);
+            GeneratorManagement.Register(this, GenerationModType.Addend, AddObjects);
+        }
+
+        private void AddObjects(string floor, int floorNumber, SceneObject floorObject)
+        {
+            if (floor.StartsWith("F"))
+            {
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("Splaat"),
+                    weight = floorNumber < 2 ? 350 * floorNumber : 600
+                }
+                );
+            }
+            else if (floor == "END")
+            {
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("Splaat"),
+                    weight = 600
+                }
+                );
+            }
+
+            floorObject.MarkAsNeverUnload();
         }
     }
 }
