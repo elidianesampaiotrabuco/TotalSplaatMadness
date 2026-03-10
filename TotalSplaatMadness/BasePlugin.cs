@@ -52,6 +52,15 @@ namespace TotalSplaatMadness
 .SetPoster(assetMan.Get<Texture2D>("Reversed Splaat Poster"), "taalpS", ".ereh s\'eh yhw eulc oN .ogol taalpS 8991 opusC yksalK eht gnignis elihw ,loohcs eht dnuora srednaw taht talps kni nA")
 .Build();
 
+            WeirdCodeSplaat RealWeirdCodeSplaat = new NPCBuilder<WeirdCodeSplaat>(Info)
+.SetName("Weird Code Splaat")
+.SetEnum("RealWeirdCodeSplaat")
+.SetMinMaxAudioDistance(1, 300)
+.IgnorePlayerOnSpawn()
+.AddSpawnableRoomCategories(new RoomCategory[] { RoomCategory.Hall, RoomCategory.Class, RoomCategory.Office, RoomCategory.Faculty })
+.SetPoster(assetMan.Get<Texture2D>("Weird Code Splaat Poster"), "Weird Code Splaat", "-.- .-.. .- ... -.- -.-- / -.-. ... ..- .--. ---")
+.Build();
+
             yield return "Doing some miscellaneous stuff...";
 
             NormalSplaat.normalSplaatSprite = assetMan.Get<Sprite>("Normal Splaat Sprite");
@@ -60,10 +69,13 @@ namespace TotalSplaatMadness
             RealGMajorSplaat.gmajorKlaskyCsupo = assetMan.Get<SoundObject>("G Major Splaat Music");
             RealReversedSplaat.reversedSplaatSprite = assetMan.Get<Sprite>("Reversed Splaat Sprite");
             RealReversedSplaat.reversedKlaskyCsupo = assetMan.Get<SoundObject>("Reversed Splaat Music");
+            RealWeirdCodeSplaat.weirdCodeSplaatSprite = assetMan.Get<Sprite>("Weird Code Splaat Sprite");
+            RealWeirdCodeSplaat.weirdCodeKlaskyCsupo = assetMan.Get<SoundObject>("Weird Code Splaat Music");
 
             assetMan.Add<NPC>("Splaat", NormalSplaat);
             assetMan.Add<NPC>("G-Major Splaat", RealGMajorSplaat);
             assetMan.Add<NPC>("Reversed Splaat", RealReversedSplaat);
+            assetMan.Add<NPC>("Weird Code Splaat", RealWeirdCodeSplaat);
 
             yield break;
         }
@@ -83,6 +95,10 @@ namespace TotalSplaatMadness
             assetMan.Add<Texture2D>("Reversed Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "ReversedSplaatPoster.png"));
             assetMan.Add<Sprite>("Reversed Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("Reversed Splaat Texture"), 100));
             assetMan.Add<SoundObject>("Reversed Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "ReversedSplaat.mp3"), "*cisuM*", SoundType.Music, normalSplaatColor));
+            assetMan.Add<Texture2D>("Weird Code Splaat Texture", AssetLoader.TextureFromMod(this, npcSubDirectory, "WeirdCodeSplaat.png"));
+            assetMan.Add<Texture2D>("Weird Code Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "WeirdCodeSplaatPoster.png"));
+            assetMan.Add<Sprite>("Weird Code Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("Weird Code Splaat Texture"), 100));
+            assetMan.Add<SoundObject>("Weird Code Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "WeirdCodeSplaat.mp3"), "*Weird music*", SoundType.Music, Color.blue));
         }
 
         public void Awake()
@@ -119,6 +135,12 @@ namespace TotalSplaatMadness
                     weight = floorNumber < 2 ? 65 * floorNumber : 200
                 }
                 );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("Weird Code Splaat"),
+                    weight = floorNumber < 2 ? 50 * floorNumber : 275
+                }
+);
             }
             else if (floor == "END")
             {
@@ -138,6 +160,12 @@ namespace TotalSplaatMadness
                 {
                     selection = assetMan.Get<NPC>("Reversed Splaat"),
                     weight = 200
+                }
+                );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("Weird Code Splaat"),
+                    weight = 275
                 }
                 );
             }
