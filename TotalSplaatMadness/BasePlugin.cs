@@ -88,6 +88,15 @@ namespace TotalSplaatMadness
 .SetPoster(assetMan.Get<Texture2D>("Low Voice Splaat Poster"), "Low Voice Splaat", "A color inverted and mirrored Splaat that wanders around the school, singing slowly.")
 .Build();
 
+            FormulatorV975Splaat Real4ormulatorV975Splaat = new NPCBuilder<FormulatorV975Splaat>(Info)
+.SetName("4ormulator V975 Splaat")
+.SetEnum("Real4ormulatorV975Splaat")
+.SetMinMaxAudioDistance(1, 300)
+.IgnorePlayerOnSpawn()
+.AddSpawnableRoomCategories(new RoomCategory[] { RoomCategory.Hall, RoomCategory.Class, RoomCategory.Office, RoomCategory.Faculty })
+.SetPoster(assetMan.Get<Texture2D>("4ormulator V975 Splaat Poster"), "4ormulator V975 Splaat", "4ormulator effect that simply wanders around the map. 4ormulator effects have come into town...")
+.Build();
+
             yield return "Doing some miscellaneous stuff...";
 
             NormalSplaat.normalSplaatSprite = assetMan.Get<Sprite>("Normal Splaat Sprite");
@@ -104,6 +113,8 @@ namespace TotalSplaatMadness
             RealDUHSplaat.duhKlaskyCsupo = assetMan.Get<SoundObject>("DUH Splaat Music");
             RealLowVoiceSplaat.lowVoiceSplaatSprite = assetMan.Get<Sprite>("Low Voice Splaat Sprite");
             RealLowVoiceSplaat.lowVoiceKlaskyCsupo = assetMan.Get<SoundObject>("Low Voice Splaat Music");
+            Real4ormulatorV975Splaat.formulator975SplaatSprite = assetMan.Get<Sprite>("4ormulator V975 Splaat Sprite");
+            Real4ormulatorV975Splaat.formulator975KlaskyCsupo = assetMan.Get<SoundObject>("4ormulator V975 Splaat Music");
 
             assetMan.Add<NPC>("Splaat", NormalSplaat);
             assetMan.Add<NPC>("G-Major Splaat", RealGMajorSplaat);
@@ -112,6 +123,7 @@ namespace TotalSplaatMadness
             assetMan.Add<NPC>("Not Scary Splaat", RealNotScarySplaat);
             assetMan.Add<NPC>("DUH Splaat", RealDUHSplaat);
             assetMan.Add<NPC>("Low Voice Splaat", RealLowVoiceSplaat);
+            assetMan.Add<NPC>("4ormulator V975 Splaat", Real4ormulatorV975Splaat);
 
             yield break;
         }
@@ -155,6 +167,11 @@ namespace TotalSplaatMadness
             assetMan.Add<Sprite>("Low Voice Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("Low Voice Splaat Texture"), 100));
             Color lowVoiceSplaatColor = new Color32(158, 182, 212, 255);
             assetMan.Add<SoundObject>("Low Voice Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "LowVoiceSplaat.mp3"), "*Music*", SoundType.Music, lowVoiceSplaatColor));
+            // 4ormulator V975 Splaat (Formulator V975 Splaat in code due to C# limitations)
+            assetMan.Add<Texture2D>("4ormulator V975 Splaat Texture", AssetLoader.TextureFromMod(this, npcSubDirectory, "4ormulatorV975Splaat.png"));
+            assetMan.Add<Texture2D>("4ormulator V975 Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "4ormulatorV975SplaatPoster.png"));
+            assetMan.Add<Sprite>("4ormulator V975 Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("4ormulator V975 Splaat Texture"), 100));
+            assetMan.Add<SoundObject>("4ormulator V975 Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "4ormulatorV975Splaat.mp3"), "*Music*", SoundType.Music, Color.white));
         }
 
         public void Awake()
@@ -215,6 +232,12 @@ namespace TotalSplaatMadness
                     weight = floorNumber < 2 ? 20 * floorNumber : 100
                 }
                 );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("4ormulator V975 Splaat"),
+                    weight = floorNumber < 2 ? 1010 * floorNumber : 1100
+                }
+                );
             }
             else if (floor == "END")
             {
@@ -258,6 +281,12 @@ namespace TotalSplaatMadness
                 {
                     selection = assetMan.Get<NPC>("Low Voice Splaat"),
                     weight = 100
+                }
+                );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("4ormulator V975 Splaat"),
+                    weight = 1100
                 }
                 );
             }
