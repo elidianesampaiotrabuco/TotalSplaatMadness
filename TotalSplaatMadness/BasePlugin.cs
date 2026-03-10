@@ -139,7 +139,7 @@ namespace TotalSplaatMadness
                     selection = assetMan.Get<NPC>("Reversed Splaat"),
                     weight = 200
                 }
-);
+                );
             }
 
             floorObject.MarkAsNeverUnload();
