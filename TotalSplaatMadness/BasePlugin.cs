@@ -106,6 +106,24 @@ namespace TotalSplaatMadness
 .SetPoster(assetMan.Get<Texture2D>("Kormulator V458 Splaat Poster"), "Kormulator V458 Splaat", "This Splaat can bleed your ears...")
 .Build();
 
+            KormulatorV474Splaat RealKormulatorV474Splaat = new NPCBuilder<KormulatorV474Splaat>(Info)
+.SetName("Kormulator V474 Splaat")
+.SetEnum("RealKormulatorV474Splaat")
+.SetMinMaxAudioDistance(1, 300)
+.IgnorePlayerOnSpawn()
+.AddSpawnableRoomCategories(new RoomCategory[] { RoomCategory.Hall, RoomCategory.Class, RoomCategory.Office, RoomCategory.Faculty })
+.SetPoster(assetMan.Get<Texture2D>("Kormulator V474 Splaat Poster"), "Kormulator V474 Splaat", "A strange looking Splaat, that looks like an insect. Still kinda ear bleedy, tho.")
+.Build();
+
+            OofedSplaat RealOofedSplaat = new NPCBuilder<OofedSplaat>(Info)
+.SetName("Oofed Splaat")
+.SetEnum("RealOofedSplaat")
+.SetMinMaxAudioDistance(1, 300)
+.IgnorePlayerOnSpawn()
+.AddSpawnableRoomCategories(new RoomCategory[] { RoomCategory.Hall, RoomCategory.Class, RoomCategory.Office, RoomCategory.Faculty })
+.SetPoster(assetMan.Get<Texture2D>("Oofed Splaat Poster"), "Oofed Splaat", "OUCH!")
+.Build();
+
             yield return "Doing some miscellaneous stuff...";
 
             NormalSplaat.normalSplaatSprite = assetMan.Get<Sprite>("Normal Splaat Sprite");
@@ -126,6 +144,10 @@ namespace TotalSplaatMadness
             Real4ormulatorV975Splaat.formulator975KlaskyCsupo = assetMan.Get<SoundObject>("4ormulator V975 Splaat Music");
             RealKormulatorV458Splaat.kormulator458SplaatSprite = assetMan.Get<Sprite>("Kormulator V458 Splaat Sprite");
             RealKormulatorV458Splaat.kormulator458KlaskyCsupo = assetMan.Get<SoundObject>("Kormulator V458 Splaat Music");
+            RealKormulatorV474Splaat.kormulator474SplaatSprite = assetMan.Get<Sprite>("Kormulator V474 Splaat Sprite");
+            RealKormulatorV474Splaat.kormulator474KlaskyCsupo = assetMan.Get<SoundObject>("Kormulator V474 Splaat Music");
+            RealOofedSplaat.oofedSplaatSprite = assetMan.Get<Sprite>("Oofed Splaat Sprite");
+            RealOofedSplaat.oofedKlaskyCsupo = assetMan.Get<SoundObject>("Oofed Splaat Music");
 
             assetMan.Add<NPC>("Splaat", NormalSplaat);
             assetMan.Add<NPC>("G-Major Splaat", RealGMajorSplaat);
@@ -136,6 +158,8 @@ namespace TotalSplaatMadness
             assetMan.Add<NPC>("Low Voice Splaat", RealLowVoiceSplaat);
             assetMan.Add<NPC>("4ormulator V975 Splaat", Real4ormulatorV975Splaat);
             assetMan.Add<NPC>("Kormulator V458 Splaat", RealKormulatorV458Splaat);
+            assetMan.Add<NPC>("Kormulator V474 Splaat", RealKormulatorV474Splaat);
+            assetMan.Add<NPC>("Oofed Splaat", RealOofedSplaat);
 
             yield break;
         }
@@ -189,6 +213,17 @@ namespace TotalSplaatMadness
             assetMan.Add<Texture2D>("Kormulator V458 Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "KormulatorV458SplaatPoster.png"));
             assetMan.Add<Sprite>("Kormulator V458 Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("Kormulator V458 Splaat Texture"), 100));
             assetMan.Add<SoundObject>("Kormulator V458 Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "KormulatorV458Splaat.mp3"), "*Loud noises*", SoundType.Music, normalSplaatColor));
+            // Kormulator V474 Splaat
+            assetMan.Add<Texture2D>("Kormulator V474 Splaat Texture", AssetLoader.TextureFromMod(this, npcSubDirectory, "KormulatorV474Splaat.png"));
+            assetMan.Add<Texture2D>("Kormulator V474 Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "KormulatorV474SplaatPoster.png"));
+            assetMan.Add<Sprite>("Kormulator V474 Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("Kormulator V474 Splaat Texture"), 100));
+            assetMan.Add<SoundObject>("Kormulator V474 Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "KormulatorV474Splaat.mp3"), "*Muffled music*", SoundType.Music, Color.green));
+            // Oofed Splaat
+            assetMan.Add<Texture2D>("Oofed Splaat Texture", AssetLoader.TextureFromMod(this, npcSubDirectory, "OofedSplaat.png"));
+            assetMan.Add<Texture2D>("Oofed Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "OofedSplaatPoster.png"));
+            assetMan.Add<Sprite>("Oofed Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("Oofed Splaat Texture"), 100));
+            Color purpleColor = new Color32(93, 63, 211, 255);
+            assetMan.Add<SoundObject>("Oofed Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "OofedSplaat.mp3"), "*Music*", SoundType.Music, purpleColor));
         }
 
         public void Awake()
@@ -261,6 +296,18 @@ namespace TotalSplaatMadness
                     weight = floorNumber < 2 ? 1145 * floorNumber : 1200
                 }
                 );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("Kormulator V474 Splaat"),
+                    weight = floorNumber < 2 ? 1145 * floorNumber : 1200
+                }
+                );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("Oofed Splaat"),
+                    weight = floorNumber < 2 ? 10 * floorNumber : 50
+                }
+);
             }
             else if (floor == "END")
             {
@@ -316,6 +363,18 @@ namespace TotalSplaatMadness
                 {
                     selection = assetMan.Get<NPC>("Kormulator V458 Splaat"),
                     weight = 1200
+                }
+                );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("Kormulator V474 Splaat"),
+                    weight = 1200
+                }
+                );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("Oofed Splaat"),
+                    weight = 50
                 }
                 );
             }
