@@ -133,6 +133,15 @@ namespace TotalSplaatMadness
 .SetPoster(assetMan.Get<Texture2D>("High Splaat Poster"), "High Splaat", "A Splaat that wanders around the map. He has a relationship with Spoiled Splaat.")
 .Build();
 
+            SpoiledSplaat RealSpoiledSplaat = new NPCBuilder<SpoiledSplaat>(Info)
+.SetName("Spoiled Splaat")
+.SetEnum("RealSpoiledSplaat")
+.SetMinMaxAudioDistance(1, 300)
+.IgnorePlayerOnSpawn()
+.AddSpawnableRoomCategories(new RoomCategory[] { RoomCategory.Hall, RoomCategory.Class, RoomCategory.Office, RoomCategory.Faculty })
+.SetPoster(assetMan.Get<Texture2D>("Spoiled Splaat Poster"), "Spoiled Splaat", "Ripply Splaat that wanders around the map. Has relationship with High Splaat.")
+.Build();
+
             yield return "Doing some miscellaneous stuff...";
 
             NormalSplaat.normalSplaatSprite = assetMan.Get<Sprite>("Normal Splaat Sprite");
@@ -159,6 +168,8 @@ namespace TotalSplaatMadness
             RealOofedSplaat.oofedKlaskyCsupo = assetMan.Get<SoundObject>("Oofed Splaat Music");
             RealHighSplaat.highSplaatSprite = assetMan.Get<Sprite>("High Splaat Sprite");
             RealHighSplaat.highKlaskyCsupo = assetMan.Get<SoundObject>("High Splaat Music");
+            RealSpoiledSplaat.spoiledSplaatSprite = assetMan.Get<Sprite>("Spoiled Splaat Sprite");
+            RealSpoiledSplaat.spoiledKlaskyCsupo = assetMan.Get<SoundObject>("Spoiled Splaat Music");
 
             assetMan.Add<NPC>("Splaat", NormalSplaat);
             assetMan.Add<NPC>("G-Major Splaat", RealGMajorSplaat);
@@ -172,6 +183,7 @@ namespace TotalSplaatMadness
             assetMan.Add<NPC>("Kormulator V474 Splaat", RealKormulatorV474Splaat);
             assetMan.Add<NPC>("Oofed Splaat", RealOofedSplaat);
             assetMan.Add<NPC>("High Splaat", RealHighSplaat);
+            assetMan.Add<NPC>("Spoiled Splaat", RealSpoiledSplaat);
 
             yield break;
         }
@@ -241,6 +253,11 @@ namespace TotalSplaatMadness
             assetMan.Add<Texture2D>("High Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "HighSplaatPoster.png"));
             assetMan.Add<Sprite>("High Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("High Splaat Texture"), 100));
             assetMan.Add<SoundObject>("High Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "HighSplaat.mp3"), "*musIC*", SoundType.Music, normalSplaatColor));
+            // Spoiled Splaat
+            assetMan.Add<Texture2D>("Spoiled Splaat Texture", AssetLoader.TextureFromMod(this, npcSubDirectory, "SpoiledSplaat.png"));
+            assetMan.Add<Texture2D>("Spoiled Splaat Poster", AssetLoader.TextureFromMod(this, npcSubDirectory, "SpoiledSplaatPoster.png"));
+            assetMan.Add<Sprite>("Spoiled Splaat Sprite", AssetLoader.SpriteFromTexture2D(assetMan.Get<Texture2D>("Spoiled Splaat Texture"), 100));
+            assetMan.Add<SoundObject>("Spoiled Splaat Music", ObjectCreators.CreateSoundObject(AssetLoader.AudioClipFromMod(this, npcAudioSubDirectory, "SpoiledSplaat.mp3"), "*MUsic*", SoundType.Music, normalSplaatColor));
         }
 
         public void Awake()
@@ -331,6 +348,12 @@ namespace TotalSplaatMadness
                     weight = floorNumber < 2 ? 950 * floorNumber : 1000
                 }
                 );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("Spoiled Splaat"),
+                    weight = floorNumber < 2 ? 875 * floorNumber : 950
+                }
+                );
             }
             else if (floor == "END")
             {
@@ -403,6 +426,12 @@ namespace TotalSplaatMadness
                 floorObject.potentialNPCs.Add(new WeightedNPC()
                 {
                     selection = assetMan.Get<NPC>("High Splaat"),
+                    weight = 1000
+                }
+                );
+                floorObject.potentialNPCs.Add(new WeightedNPC()
+                {
+                    selection = assetMan.Get<NPC>("Spoiled Splaat"),
                     weight = 1000
                 }
                 );
