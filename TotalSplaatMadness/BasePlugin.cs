@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace TotalSplaatMadness
 {
-    [BepInPlugin("sticky.bbplus.splaatvariants", "Total Splaat Madness", "0.1.0")]
+    [BepInPlugin("sticky.bbplus.splaatvariants", "Total Splaat Madness", "0.2.0")]
 
     [BepInDependency("mtm101.rulerp.bbplus.baldidevapi")]
 
